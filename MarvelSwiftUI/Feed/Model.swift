@@ -22,48 +22,48 @@ struct Data: Codable {
     let limit: Int
     let total: Int
     let count: Int
-    let results: [Result]
+    let results: [Character]
 }
 
-struct Result: Codable {
+struct Character: Identifiable, Codable, Hashable {
     let id: Int
     let name: String
     let description: String?
     let modified: String
     let thumbnail: Thumbnail
     let resourceURI: String
-    let comics, series: Comics
-    let stories: Stories
-    let events: Comics
+//    let comics, series: Comics
+//    let stories: Stories
+//    let events: Comics
     let urls: [URLElement]?
 }
 
-struct Comics: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [ComicsItem]
-    let returned: Int
-}
+//struct Comics: Codable {
+//    let available: Int
+//    let collectionURI: String
+//    let items: [ComicsItem]
+//    let returned: Int
+//}
 
-struct ComicsItem: Codable {
-    let resourceURI: String
-    let name: String
-}
+//struct ComicsItem: Codable {
+//    let resourceURI: String
+//    let name: String
+//}
 
-struct Stories: Codable {
-    let available: Int
-    let collectionURI: String
-    let items: [StoriesItem]
-    let returned: Int
-}
+//struct Stories: Codable {
+//    let available: Int
+//    let collectionURI: String
+//    let items: [StoriesItem]
+//    let returned: Int
+//}
 
-struct StoriesItem: Codable {
+struct StoriesItem: Codable, Hashable {
     let resourceURI: String
     let name: String
     let type: String?
 }
 
-struct Thumbnail: Codable {
+struct Thumbnail: Codable, Hashable {
     let path: String
     let thumbnailExtension: String?
     
@@ -73,7 +73,7 @@ struct Thumbnail: Codable {
     }
 }
 
-struct URLElement: Codable {
+struct URLElement: Codable, Hashable {
     let type: String
     let url: String
 }

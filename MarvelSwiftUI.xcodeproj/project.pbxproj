@@ -17,6 +17,8 @@
 		DAA22F742AC2D75C003D5347 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DAA22F732AC2D75C003D5347 /* Alamofire */; };
 		DAA22F782AC2DEFA003D5347 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F772AC2DEFA003D5347 /* Const.swift */; };
 		DAA22F7A2AC2E281003D5347 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F792AC2E281003D5347 /* Extensions.swift */; };
+		DAA22F7E2AC30370003D5347 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F7D2AC30370003D5347 /* FeedCell.swift */; };
+		DAA22F822AC319A6003D5347 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F812AC319A6003D5347 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		DAA22F692AC2C54C003D5347 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DAA22F772AC2DEFA003D5347 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		DAA22F792AC2E281003D5347 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DAA22F7D2AC30370003D5347 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		DAA22F7F2AC31364003D5347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DAA22F812AC319A6003D5347 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +68,9 @@
 		DAA22F582AC2C505003D5347 /* MarvelSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DAA22F7F2AC31364003D5347 /* Info.plist */,
 				DAA22F592AC2C505003D5347 /* MarvelSwiftUIApp.swift */,
-				DAA22F5B2AC2C505003D5347 /* FeedView.swift */,
-				DAA22F672AC2C542003D5347 /* FeedViewModel.swift */,
-				DAA22F692AC2C54C003D5347 /* Model.swift */,
+				DAA22F7B2AC2E50E003D5347 /* Feed */,
 				DAA22F772AC2DEFA003D5347 /* Const.swift */,
 				DAA22F792AC2E281003D5347 /* Extensions.swift */,
 				DAA22F5D2AC2C507003D5347 /* Assets.xcassets */,
@@ -81,6 +85,34 @@
 				DAA22F602AC2C507003D5347 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DAA22F7B2AC2E50E003D5347 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DAA22F802AC3198F003D5347 /* SearchBar */,
+				DAA22F7C2AC3035A003D5347 /* FeedCell */,
+				DAA22F672AC2C542003D5347 /* FeedViewModel.swift */,
+				DAA22F5B2AC2C505003D5347 /* FeedView.swift */,
+				DAA22F692AC2C54C003D5347 /* Model.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		DAA22F7C2AC3035A003D5347 /* FeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAA22F7D2AC30370003D5347 /* FeedCell.swift */,
+			);
+			path = FeedCell;
+			sourceTree = "<group>";
+		};
+		DAA22F802AC3198F003D5347 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				DAA22F812AC319A6003D5347 /* SearchBar.swift */,
+			);
+			path = SearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA22F7E2AC30370003D5347 /* FeedCell.swift in Sources */,
 				DAA22F5C2AC2C505003D5347 /* FeedView.swift in Sources */,
+				DAA22F822AC319A6003D5347 /* SearchBar.swift in Sources */,
 				DAA22F7A2AC2E281003D5347 /* Extensions.swift in Sources */,
 				DAA22F5A2AC2C505003D5347 /* MarvelSwiftUIApp.swift in Sources */,
 				DAA22F682AC2C542003D5347 /* FeedViewModel.swift in Sources */,
@@ -225,7 +259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -282,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -303,6 +337,7 @@
 				DEVELOPMENT_TEAM = U5279PG82X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +367,7 @@
 				DEVELOPMENT_TEAM = U5279PG82X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
