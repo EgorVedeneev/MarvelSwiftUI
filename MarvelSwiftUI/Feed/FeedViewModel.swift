@@ -13,6 +13,8 @@ class FeedViewModel: ObservableObject {
     @Published var feed = MarvelJSON()
     @Published var characters: [Character]? = nil
     @Published var searchText = ""
+    @Published var isLoading = false
+    @Published var offset: Int = 0
 
     private let url = URL(string: Const.urlString)
     private let ts = Date().timeStamp
@@ -38,7 +40,8 @@ class FeedViewModel: ObservableObject {
         return md5Hash
     }
 
-    func searchCharacters () {
+    public func searchCharacters() {
+        isLoading = true
         let hash = createHash()
         
         let parameters = [
@@ -61,16 +64,18 @@ class FeedViewModel: ObservableObject {
                     let decoder = JSONDecoder()
                     let results = try! decoder.decode(MarvelJSON.self, from: data)
                     self.characters = results.data?.results
+                    self.isLoading = false
                 }
-            
         }
     }
 
     
-    func fetchItems() {
+    public func fetchItems() {
+        isLoading = true
         let hash = createHash()
         let parameters = [
             "limit": "\(10)",
+            "offset": "\(offset)",
             "ts" : "\(ts)",
             "apikey" : "\(Const.publicKey)",
             "hash" : "\(hash)",
@@ -89,8 +94,8 @@ class FeedViewModel: ObservableObject {
                     let decoder = JSONDecoder()
                     let results = try! decoder.decode(MarvelJSON.self, from: data)
                     self.characters = results.data?.results
+                    self.isLoading = false
                 }
-            
         }
     }
 }

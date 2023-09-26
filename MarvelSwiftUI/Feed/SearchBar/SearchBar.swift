@@ -14,6 +14,7 @@ struct SearchBar: View {
         HStack(spacing: 10) {
             Image(systemName: "magnifyingglass")
             TextField("Search", text: $searchText)
+                .autocorrectionDisabled()
         }
         .padding(5)
         .overlay {
