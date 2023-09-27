@@ -17,7 +17,7 @@ struct FeedCell: View {
             Divider()
             HStack {
                 ZStack {
-                    KFImage(URL(string: character.thumbnail.path.description + ".jpg"))
+                    KFImage(URL(string: character.thumbnail.path + ".jpg"))
                         .placeholder({
                             ZStack {
                                 Color.gray.opacity(0.1)

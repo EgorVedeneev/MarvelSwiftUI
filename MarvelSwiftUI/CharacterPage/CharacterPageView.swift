@@ -11,7 +11,7 @@ import Kingfisher
 struct CharacterPageView: View {
     var character: Character
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(spacing: 20) {
             KFImage(URL(string: character.thumbnail.path + ".jpg"))
                 .resizable()
                 .scaledToFit()

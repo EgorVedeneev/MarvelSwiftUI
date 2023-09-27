@@ -9,42 +9,44 @@ import SwiftUI
 
 struct FeedView: View {
     @StateObject var viewModel = FeedViewModel()
-    @State var characters = [Character]()
     @State var seatchText = ""
+    @State var needUpload = false
+    @State var minY = CGFloat()
+    @State var height = CGFloat()
     
     var body: some View {
         NavigationView {
             ScrollView {
                 SearchBar(searchText: $viewModel.searchText)
                 LazyVStack(spacing: 8) {
-                    if let characters = viewModel.characters {
-                        
-                        if characters.isEmpty {
-                            Text("Nothing found")
-                        }
-                        
-                        ForEach(characters) {character in
-                            NavigationLink {
-                                CharacterPageView(character: character)
-                            } label: {
-                                FeedCell(character: character)
-                            }
-                        }
-                        
-                        if !characters.isEmpty {
-                            Divider()
+                    if viewModel.characters.isEmpty {
+                        Text("Nothing found")
+                    }
+                    
+                    ForEach(viewModel.characters) { character in
+                        NavigationLink {
+                            CharacterPageView(character: character)
+                        } label: {
+                            FeedCell(character: character)
                         }
                     }
                     
+                    if !viewModel.characters.isEmpty {
+                        Divider()
+                    }
                     
+                    ProgressView().onAppear(perform: {
+                        viewModel.appendOffset()
+                        viewModel.fetchMoreCharacters()
+                    })
                 }
                 .padding()
             }
             .overlay {
-                if viewModel.isLoading {
-                    Color.white.opacity(0.5).ignoresSafeArea()
-                    ProgressView()
-                }
+//                if viewModel.isLoading {
+//                    Color.white.opacity(0.5).ignoresSafeArea()
+//                    ProgressView()
+//                }
             }
             .onAppear {
                 viewModel.isLoading = true
@@ -52,9 +54,13 @@ struct FeedView: View {
             }
         }
         .navigationTitle("Characters")
-    }//Hulk
+    }
+    
+    func upload() {
+    
+    }
 }
 
-#Preview {
-    FeedView()
-}
+//#Preview {
+//    FeedView()
+//}

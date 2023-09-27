@@ -11,7 +11,7 @@ import Alamofire
 
 class FeedViewModel: ObservableObject {
     @Published var feed = MarvelJSON()
-    @Published var characters: [Character]? = nil
+    @Published var characters: [Character] = []
     @Published var searchText = ""
     @Published var isLoading = false
     @Published var offset: Int = 0
@@ -39,6 +39,10 @@ class FeedViewModel: ObservableObject {
         let md5Hash = hash.md5
         return md5Hash
     }
+    
+    public func appendOffset() {
+        offset = characters.count
+    }
 
     public func searchCharacters() {
         isLoading = true
@@ -63,7 +67,8 @@ class FeedViewModel: ObservableObject {
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
                     let results = try! decoder.decode(MarvelJSON.self, from: data)
-                    self.characters = results.data?.results
+                    guard let characters = results.data?.results else { return }
+                    self.characters = characters
                     self.isLoading = false
                 }
         }
@@ -75,7 +80,6 @@ class FeedViewModel: ObservableObject {
         let hash = createHash()
         let parameters = [
             "limit": "\(10)",
-            "offset": "\(offset)",
             "ts" : "\(ts)",
             "apikey" : "\(Const.publicKey)",
             "hash" : "\(hash)",
@@ -93,9 +97,38 @@ class FeedViewModel: ObservableObject {
                     guard let data = response.data else { return }
                     let decoder = JSONDecoder()
                     let results = try! decoder.decode(MarvelJSON.self, from: data)
-                    self.characters = results.data?.results
+                    guard let characters = results.data?.results else { return }
+                    self.characters = characters
                     self.isLoading = false
                 }
+        }
+    }
+    
+    public func fetchMoreCharacters() {
+        let hash = createHash()
+        let parameters = [
+            "limit": "\(10)",
+            "ts" : "\(ts)",
+            "apikey" : "\(Const.publicKey)",
+            "hash" : "\(hash)",
+            "offset": "\(offset)",
+        ]
+        
+        guard let url = url else { return }
+        AF.request(url, method: .get, parameters: parameters)
+            .validate()
+            .response { response in
+                switch response.result {
+                case .failure(let error):
+                    print(error)
+                    
+                case .success:
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    let results = try! decoder.decode(MarvelJSON.self, from: data)
+                    guard let characters = results.data?.results else { return }
+                    self.characters.append(contentsOf: characters)
+            }
         }
     }
 }
