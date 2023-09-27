@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct FeedView: View {
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @StateObject var viewModel = FeedViewModel()
     @State var seatchText = ""
     @State var needUpload = false
     @State var minY = CGFloat()
     @State var height = CGFloat()
+    @State private var showNetAlert = false
     
     var body: some View {
         NavigationView {
@@ -53,7 +55,11 @@ struct FeedView: View {
                 viewModel.fetchItems()
             }
         }
-        .navigationTitle("Characters")
+        .onChange(of: networkMonitor.isConnected) { connection in
+            showNetAlert = connection == false
+        }
+        .alert("Missing Network Connection", isPresented: $showNetAlert ) {}
+        
     }
     
     func upload() {

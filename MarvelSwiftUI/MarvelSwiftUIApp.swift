@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MarvelSwiftUIApp: App {
+    @StateObject var networkMonitor = NetworkMonitor()
     var body: some Scene {
         WindowGroup {
             FeedView()
+                .environmentObject(networkMonitor)
         }
     }
 }

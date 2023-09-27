@@ -20,6 +20,7 @@
 		DAA22F7E2AC30370003D5347 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F7D2AC30370003D5347 /* FeedCell.swift */; };
 		DAA22F822AC319A6003D5347 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F812AC319A6003D5347 /* SearchBar.swift */; };
 		DAA22F862AC324DA003D5347 /* CharacterPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA22F852AC324DA003D5347 /* CharacterPageView.swift */; };
+		DADC7A092AC45ABB00A1C45B /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7A082AC45ABB00A1C45B /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DAA22F7F2AC31364003D5347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DAA22F812AC319A6003D5347 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		DAA22F852AC324DA003D5347 /* CharacterPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPageView.swift; sourceTree = "<group>"; };
+		DADC7A082AC45ABB00A1C45B /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				DAA22F842AC3229D003D5347 /* CharacterPage */,
 				DAA22F772AC2DEFA003D5347 /* Const.swift */,
 				DAA22F792AC2E281003D5347 /* Extensions.swift */,
+				DADC7A082AC45ABB00A1C45B /* NetworkMonitor.swift */,
 				DAA22F5D2AC2C507003D5347 /* Assets.xcassets */,
 				DAA22F5F2AC2C507003D5347 /* Preview Content */,
 			);
@@ -211,6 +214,7 @@
 				DAA22F5A2AC2C505003D5347 /* MarvelSwiftUIApp.swift in Sources */,
 				DAA22F682AC2C542003D5347 /* FeedViewModel.swift in Sources */,
 				DAA22F6A2AC2C54C003D5347 /* Model.swift in Sources */,
+				DADC7A092AC45ABB00A1C45B /* NetworkMonitor.swift in Sources */,
 				DAA22F862AC324DA003D5347 /* CharacterPageView.swift in Sources */,
 				DAA22F782AC2DEFA003D5347 /* Const.swift in Sources */,
 			);
